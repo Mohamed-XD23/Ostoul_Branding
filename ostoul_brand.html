@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ostoul — Brand Identity</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --black: #0e0e0e;
+      --dark: #0B0F14;
+      --surface: #1a1a1a;
+      --border: #242424;
+      --muted: #3a3a3a;
+      --subtle: #555;
+      --mid: #888;
+      --light: #bbb;
+      --white: #e8e6e0;
+      --gray: #7f7f7f;
+      --red: #c0392b;
+      --red-dim: #8b1a1a;
+      --sans: 'Montserrat', sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--sans);
+      overflow-x: hidden;
+      cursor: crosshair;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar {
+      width: 2px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--black);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--red);
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      background: rgba(14, 14, 14, 0.85);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+
+    .nav-brand {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      color: var(--subtle);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color .3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    /* ─── SECTION LABELS ─── */
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--red);
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 48px 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 40%, #1a0a0a 0%, var(--black) 70%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 80px 80px;
+      opacity: 0.3;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      animation: fadeUp .8s ease both;
+    }
+
+    .hero-logo {
+      width: 220px;
+      height: 220px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 60px rgba(192, 57, 43, 0.15));
+      animation: fadeUp .8s .1s ease both;
+    }
+
+    .hero-name {
+      font-family: var(--sans);
+      font-size: clamp(56px, 8vw, 96px);
+      font-weight: 300;
+      letter-spacing: 12px;
+      line-height: 1;
+      margin-top: 32px;
+      animation: fadeUp .8s .2s ease both;
+    }
+
+    .hero-ar {
+      font-size: 22px;
+      color: var(--subtle);
+      margin-top: 8px;
+      letter-spacing: 6px;
+      animation: fadeUp .8s .3s ease both;
+    }
+
+    .hero-tagline {
+      font-size: 11px;
+      letter-spacing: 5px;
+      color: var(--red);
+      text-transform: uppercase;
+      margin-top: 24px;
+      animation: fadeUp .8s .4s ease both;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      animation: fadeUp .8s .6s ease both;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(var(--red), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      padding: 100px 48px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* ─── LOGO GRID ─── */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 48px;
+    }
+
+    .logo-card {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      padding: 48px;
+      transition: transform .4s ease;
+    }
+
+    .logo-card:hover {
+      transform: scale(1.01);
+      z-index: 2;
+    }
+
+    .logo-card::after {
+      content: attr(data-label);
+      position: absolute;
+      bottom: 16px;
+      right: 20px;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--subtle);
+      text-transform: uppercase;
+    }
+
+    .lc-dark {
+      background: var(--dark);
+      border: 1px solid var(--border);
+    }
+
+    .lc-black {
+      background: #000;
+      border: 1px solid var(--border);
+    }
+
+    .lc-light {
+      background: #e8e6e0;
+      border: 1px solid #ccc;
+    }
+
+    .lc-gray {
+      background: var(--gray);
+      border: 1px solid var(--gray);
+    }
+
+    .logo-card img {
+      max-width: 200px;
+      max-height: 160px;
+      object-fit: contain;
+      transition: filter .3s;
+    }
+
+    .lc-light img {
+      filter: invert(1);
+    }
+
+
+
+    /* ─── TYPOGRAPHY ─── */
+    .type-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 48px;
+    }
+
+    .type-block {
+      padding: 48px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+
+    .type-sample-en {
+      font-family: var(--sans);
+      font-size: 64px;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+
+    .type-sample-ar {
+      font-size: 56px;
+      font-weight: 300;
+      color: var(--white);
+      direction: rtl;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .type-meta {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--subtle);
+      text-transform: uppercase;
+      line-height: 2;
+    }
+
+    .type-weights {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tw-row {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .tw-label {
+      font-size: 10px;
+      color: var(--subtle);
+      letter-spacing: 1px;
+      width: 80px;
+      flex-shrink: 0;
+    }
+
+    .tw-sample-en {
+      font-family: var(--sans);
+      color: var(--light);
+    }
+
+    .tw-sample-ar {
+      color: var(--light);
+      direction: rtl;
+    }
+
+    /* ─── COLORS ─── */
+    .color-row {
+      display: flex;
+      gap: 2px;
+      margin-top: 48px;
+    }
+
+    .color-swatch {
+      flex: 1;
+      height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: flex .4s ease;
+    }
+
+    .color-swatch:hover {
+      flex: 2.5;
+    }
+
+    .color-swatch::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: inherit;
+      filter: brightness(1.2);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .color-swatch:hover::before {
+      opacity: 0.3;
+    }
+
+    .sw-name {
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .sw-hex {
+      font-size: 12px;
+      letter-spacing: 1px;
+      font-family: monospace;
+      margin-top: 4px;
+    }
+
+    .sw-on-dark {
+      color: var(--white);
+    }
+
+    .sw-on-light {
+      color: #111;
+    }
+
+    /* ─── TAGLINE ─── */
+    .tagline-block {
+      margin-top: 48px;
+      padding: 64px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tagline-block::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      left: 32px;
+      font-family: var(--sans);
+      font-size: 200px;
+      color: var(--border);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .tagline-ar {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 300;
+      letter-spacing: 6px;
+      direction: rtl;
+      position: relative;
+    }
+
+    .tagline-en {
+      font-family: var(--sans);
+      font-style: italic;
+      font-size: clamp(18px, 2.5vw, 28px);
+      color: var(--mid);
+      margin-top: 16px;
+      letter-spacing: 4px;
+    }
+
+    .tagline-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+      margin: 24px auto;
+    }
+
+    /* ─── MOCKUP ─── */
+    .mockup-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 48px;
+    }
+
+    .mockup-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 48px;
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .3s;
+    }
+
+    .mockup-card:hover {
+      border-color: var(--muted);
+    }
+
+    .mockup-card-label {
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--subtle);
+      text-transform: uppercase;
+    }
+
+    /* Business card */
+    .biz-card {
+      width: 280px;
+      height: 160px;
+      background: #0e0e0e;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .biz-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .biz-info {
+      margin-right: 16px;
+      direction: rtl;
+    }
+
+    .biz-name {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .biz-tag {
+      font-size: 9px;
+      color: var(--subtle);
+      letter-spacing: 2px;
+      margin-top: 4px;
+    }
+
+    .biz-div {
+      width: 1px;
+      height: 40px;
+      background: #2a2a2a;
+      margin: 0 16px;
+    }
+
+    .biz-en {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-family: var(--sans);
+    }
+
+    /* Phone mockup */
+    .phone {
+      width: 140px;
+      height: 280px;
+      background: #111;
+      border: 2px solid #333;
+      border-radius: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .phone-screen {
+      position: absolute;
+      inset: 6px;
+      background: var(--black);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .phone-screen img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 6px;
+      background: #222;
+      border-radius: 3px;
+      z-index: 2;
+    }
+
+    /* Letterhead */
+    .letterhead {
+      width: 260px;
+      height: 340px;
+      background: #fff;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lh-header {
+      background: var(--black);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lh-logo {
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+    }
+
+    .lh-brand {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--white);
+    }
+
+    .lh-body {
+      padding: 20px;
+      flex: 1;
+    }
+
+    .lh-line {
+      height: 6px;
+      background: #e0e0e0;
+      border-radius: 3px;
+      margin-bottom: 8px;
+    }
+
+    .lh-line.short {
+      width: 60%;
+    }
+
+    .lh-line.shorter {
+      width: 40%;
+    }
+
+    .lh-footer {
+      padding: 10px 20px;
+      border-top: 2px solid var(--red);
+      font-size: 8px;
+      color: #aaa;
+      letter-spacing: 1px;
+    }
+
+    /* Favicon strip */
+    .favicon-strip {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .fav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .fav-item img {
+      image-rendering: pixelated;
+      border: 1px solid var(--border);
+    }
+
+    .fav-label {
+      font-size: 9px;
+      color: var(--subtle);
+      letter-spacing: 1px;
+    }
+
+    /* ─── FULL LOGO ROW ─── */
+    .fulllogo-wrap {
+      margin-top: 48px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .fulllogo-wrap img {
+      width: 100%;
+      object-fit: contain;
+    }
+
+    .fulllogo-corners span {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-color: var(--muted);
+      border-style: solid;
+    }
+
+    .fc-tl {
+      top: 16px;
+      left: 16px;
+      border-width: 1px 0 0 1px;
+    }
+
+    .fc-tr {
+      top: 16px;
+      right: 16px;
+      border-width: 1px 1px 0 0;
+    }
+
+    .fc-bl {
+      bottom: 16px;
+      left: 16px;
+      border-width: 0 0 1px 1px;
+    }
+
+    .fc-br {
+      bottom: 16px;
+      right: 16px;
+      border-width: 0 1px 1px 0;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .footer-mark {
+      font-size: 10px;
+      color: var(--subtle);
+      letter-spacing: 2px;
+    }
+
+    .footer-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--red);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scrollPulse {
+
+      0%,
+      100% {
+        opacity: 0.3;
+        transform: scaleY(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scaleY(1.2);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <img src="assets/IconPng.png" alt="Ostoul">
+      <span class="nav-brand">Ostoul</span>
+    </div>
+    <div class="nav-links">
+      <a href="#logos">Logos</a>
+      <a href="#typography">Typography</a>
+      <a href="#colors">Colors</a>
+      <a href="#tagline">Tagline</a>
+      <a href="#mockups">Mockups</a>
+      <a href="#favicons">Favicons</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <img class="hero-logo" src="assets/Full Logo Transparent.png" alt="Ostoul">
+      <h1 class="hero-name">OSTOUL</h1>
+      <p class="hero-ar">أسطول</p>
+      <p class="hero-tagline">Brand Identity System</p>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </div>
+
+  <!-- LOGOS -->
+  <section id="logos">
+    <div class="section-label">01 — Logo Variations</div>
+    <div class="fulllogo-wrap">
+      <div class="fulllogo-corners">
+        <span class="fc-tl"></span><span class="fc-tr"></span>
+        <span class="fc-bl"></span><span class="fc-br"></span>
+      </div>
+      <img src="assets/mockup.png" alt="Full Logo">
+    </div>
+    <div class="logo-grid reveal" style="margin-top:2px;">
+      <div class="logo-card lc-dark" data-label="Dark Background">
+        <img src="assets/Full Logo dark.png" alt="logo">
+      </div>
+      <div class="logo-card lc-black" data-label="Pure Black">
+        <img src="assets/Full Logo Pure dark.png" alt="logo">
+      </div>
+      <div class="logo-card lc-light" data-label="Light Background">
+        <img src="assets/Full Logo Transparent.png" alt="logo">
+      </div>
+      <div class="logo-card lc-gray" data-label="Brand Gray">
+        <img src="assets/Full logo Gray.png" alt="logo">
+      </div>
+    </div>
+  </section>
+
+  <!-- TYPOGRAPHY -->
+  <section id="typography">
+    <div class="section-label">02 — Typography</div>
+    <div class="type-grid reveal">
+    </div>
+    <div class="type-block">
+      <div class="type-sample-en" style="font-family:'Montserrat',sans-serif;font-size:52px;">Aa</div>
+      <p class="type-meta">
+        Body — Montserrat<br>
+        Style: Geometric Sans<br>
+        Use: Body · UI · Labels
+      </p>
+      <div class="type-weights">
+        <div class="tw-row">
+          <span class="tw-label">Light 300</span>
+          <span class="tw-sample-en" style="font-weight:300;font-size:15px;">Ostoul Platform</span>
+        </div>
+        <div class="tw-row">
+          <span class="tw-label">Regular</span>
+          <span class="tw-sample-en" style="font-weight:400;font-size:15px;">Ostoul Platform</span>
+        </div>
+        <div class="tw-row">
+          <span class="tw-label">SemiBold</span>
+          <span class="tw-sample-en" style="font-weight:600;font-size:15px;">Ostoul Platform</span>
+        </div>
+        <div class="tw-row">
+          <span class="tw-label">Bold 700</span>
+          <span class="tw-sample-en" style="font-weight:700;font-size:15px;">Ostoul Platform</span>
+        </div>
+      </div>
+    </div>
+    <div class="type-block" style="grid-column:1/-1;">
+      <div class="type-sample-ar" style="font-size:clamp(32px,5vw,72px);">أسطول</div>
+      <p class="type-meta">
+        Arabic — System Calligraphy<br>
+        Direction: RTL<br>
+        Use: Brand Name · Headlines · Tagline
+      </p>
+      <div class="type-weights" style="margin-top:24px;">
+        <div class="tw-row" style="direction:rtl;justify-content:flex-end;">
+          <span class="tw-sample-ar" style="font-size:24px;">تمتع بالقيادة — Light</span>
+          <span class="tw-label" style="text-align:right;">300</span>
+        </div>
+        <div class="tw-row" style="direction:rtl;justify-content:flex-end;">
+          <span class="tw-sample-ar" style="font-size:24px;font-weight:600;">تمتع بالقيادة — SemiBold</span>
+          <span class="tw-label" style="text-align:right;">600</span>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- COLORS -->
+  <section id="colors">
+    <div class="section-label">03 — Color Palette</div>
+    <div class="color-row reveal">
+      <div class="color-swatch sw-on-dark" style="background:#0B0F14;">
+        <span class="sw-name">Chinese Black</span>
+        <span class="sw-hex">#0B0F14</span>
+      </div>
+      <div class="color-swatch sw-on-dark" style="background:#7f7f7f;">
+        <span class="sw-name">Grey</span>
+        <span class="sw-hex">#7f7f7f</span>
+      </div>
+      <div class="color-swatch sw-on-dark" style="background:#e8e6e0;">
+        <span class="sw-name" style="color:#333;">Off White</span>
+        <span class="sw-hex" style="color:#333;">#E8E6E0</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAGLINE -->
+  <section id="tagline">
+    <div class="section-label">04 — Brand Voice</div>
+    <div class="tagline-block reveal">
+      <p class="tagline-ar">تمتع بالقيادة</p>
+      <div class="tagline-dot"></div>
+      <p class="tagline-en">Enjoy the Drive</p>
+    </div>
+  </section>
+
+  <!-- MOCKUPS -->
+  <section id="mockups">
+    <div class="section-label">05 — Brand Mockups</div>
+    <div class="mockup-grid reveal">
+
+      <!-- Business Card -->
+      <div class="mockup-card">
+        <span class="mockup-card-label">Business Card</span>
+        <div class="biz-card">
+          <img class="biz-logo" src="assets/Full transparent.png" alt="logo">
+        </div>
+      </div>
+
+      <!-- Phone -->
+      <div class="mockup-card">
+        <span class="mockup-card-label">App Icon</span>
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <img src="assets/IconPng.png" alt="app icon">
+          </div>
+        </div>
+      </div>
+
+      <!-- Letterhead -->
+      <div class="mockup-card">
+        <span class="mockup-card-label">Letterhead</span>
+        <div class="letterhead">
+          <div class="lh-header">
+            <img class="lh-logo" src="assets/Full transparent.png" alt="logo">
+          </div>
+          <div class="lh-body">
+            <div class="lh-line" style="width:80%;margin-top:12px;"></div>
+            <div class="lh-line short"></div>
+            <div style="height:16px;"></div>
+            <div class="lh-line"></div>
+            <div class="lh-line"></div>
+            <div class="lh-line"></div>
+            <div class="lh-line short"></div>
+            <div style="height:16px;"></div>
+            <div class="lh-line shorter"></div>
+            <div class="lh-line" style="width:50%;"></div>
+          </div>
+          <div class="lh-footer">ostoul.com · تمتع بالقيادة</div>
+        </div>
+      </div>
+
+      <!-- Full logo on dark -->
+      <div class="mockup-card" style="background:#000;">
+        <span class="mockup-card-label" style="color:#444;">Full Lockup</span>
+        <img src="assets/Full transparent.png" style="width:100%;object-fit:contain;" alt="full logo">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAVICONS -->
+  <section id="favicons">
+    <div class="section-label">06 — Favicon Set</div>
+    <div class="mockup-card reveal" style="margin-top:48px;min-height:200px;">
+      <div class="favicon-strip">
+        <div class="fav-item">
+          <img src="assets/favicon_io/android-chrome-512x512.png" width="80" height="80" alt="">
+          <span class="fav-label">512px</span>
+        </div>
+        <div class="fav-item">
+          <img src="assets/favicon_io/android-chrome-192x192.png" width="48" height="48" alt="">
+          <span class="fav-label">192px</span>
+        </div>
+        <div class="fav-item">
+          <img src="assets/favicon_io/apple-touch-icon.png" width="36" height="36" alt="">
+          <span class="fav-label">180px</span>
+        </div>
+        <div class="fav-item">
+          <img src="assets/favicon_io/favicon-32x32.png" width="32" height="32" alt=""
+            style="image-rendering:pixelated;">
+          <span class="fav-label">32px</span>
+        </div>
+        <div class="fav-item">
+          <img src="assets/favicon_io/favicon-16x16.png" width="16" height="16" alt=""
+            style="image-rendering:pixelated;">
+          <span class="fav-label">16px</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-mark">OSTOUL — أسطول — Brand Identity © 2026</span>
+    <div class="footer-dot"></div>
+    <span class="footer-mark" style="direction:rtl;">تمتع بالقيادة</span>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('revealed');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+
+</html>
